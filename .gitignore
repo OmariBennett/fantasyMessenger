@@ -1,0 +1,16 @@
+/node_modules/
+/public/build/
+
+.DS_Store
+.env
+/*.xd
+
+# Folders
+/adobeXd/
+/notes
+
+# Files
+/notes/
+# /src/temp/
+# /src/utilities
+

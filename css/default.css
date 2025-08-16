@@ -1,0 +1,121 @@
+/*SECTION - CUBE CSS                                                                           *****
+*	-	CUBE CSS is a CSS methodology that's orientated towards simplicity, pragmatism and consistency.
+* 	It's designed to work with the medium that you're working in-often th browser--rather than
+*		against it.
+*
+*		CUBE stand for Composition Utility Block Exception. CSS stand for Cascading Style Sheet.
+*
+*****                                                                                          *****
+*NOTE - COMPOSITION
+*		Composition layer extends CSS and is very much a high level macro view-even when applied in
+*		smaller, component-level contexts.
+*
+*	  - with the composition layer, we are suggesting layout rules and allowing the browser to make the
+*		right judgments, based on the context it finds itself in.
+*
+/*? Why macro-level thinking?
+*		 The composition layer is designed to aid this process by providing a skeletal layout structure
+* 	 that shouldn’t interfere with the components (or block, in the context of CUBE CSS) that are
+*		 featured, but also, support any variant of a component.
+*
+/*? What should the composition layer do?
+*    Provide high-level, flexible layouts
+*    Determine how elements interact with each other
+*    Create consistent flow and rhythm
+*
+/*? What shouldn’t the composition layer do?
+*    Provide visual treatment such as colour or font style
+*    Provide decorative styles such as shadows and patterns
+*    Force a browser to generate a pixel-perfect layout instead of a flexible, progressive layout
+*
+*****                                                                                          *****
+*NOTE - UTILITY
+*		A utility, in the context of CUBE CSS, is a CSS class that does one job and does that one job
+*		well.
+*		This CSS class—more often than not—will have only one CSS property defined, such as a background
+*		colour. It might also have a few CSS properties defined, in a concise group.
+*
+/*? What should utilities do?
+*    Apply a single CSS property, or a concise group of related properties to create re-usable helpers
+*    Extend design tokens to maintain a single source of truth
+*    Abstract repeatability away from the CSS and apply it in the HTML instead
+*
+/*? What shouldn’t utilities do?
+*    Define a large group of unrelated CSS properties. For example, a utility that defined color,
+*		 font-size and padding would make more sense to be a block.
+*    Be used as a specificity hack. For example, setting all properties with !important will
+* 	 undoubtedly cause problems in the long-run.
+*
+*****                                                                                          *****
+*NOTE - BLOCK
+*		A block is a skeletal component or organizational structure. To compare it to common user
+*		interface elements: it is a card element or a button element.
+*		
+*		A block is skeletal because by the time you get to the block-level in CUBE CSS, most of the work
+*		has already been done by the global CSS, composition and utility layers.
+/*_			.my-block {}
+/*_			.my-block .image {}
+/*_			.my-block .content {}
+*		You could even target HTML elements:
+/*_			.my-block {}
+/*_			.my-block img {}
+/*_			.my-block article {}
+*		
+*		The important thing is consistency. How you achieve that consistency is up to you and your team.
+*		
+/*?		What should a block do?
+*		    Extend the work already done by the global CSS, composition and utility layers
+*		    Apply a collection of design tokens within a concise group
+*		    Create a namespace or specificity boost to control a specific context
+*		
+/*?		What shouldn’t a block do?
+*		    Grow to anything larger than a handful of CSS rules (max 80-100 lines)
+*		    Solve more than one contextual problem. For example: styling a card and a button in one file
+*
+*****                                                                                          *****
+*NOTE - Exception
+*		 The last part of CUBE CSS is exceptions. An exception is a deviation from the rules outlined in
+*		 a block. Usually, an exception is related to a state change. 
+/*_  For example: you might have a “reversed” state or an “inactive” state.
+*		 
+/*?	 Why data attributes?
+*		 	We use data attributes because an exception should only occur in exceptional circumstances
+*		  (the clue is in the name). Because the exception is often caused by outside influence, such as
+*			JavaScript, a mechanism that both CSS and JavaScript can use efficiently makes sense, too. It’s
+*			also useful to consider exceptions in the context of a finite state machine (opens new window) too.
+*		 
+*		 	The goal of most of the CUBE CSS methodology is clarity and separating exceptions into data
+*			attributes achieves exactly that.
+*		 
+/*?		 What should an exception do?
+*		     Provide a concise variation to a block
+*		     Use data attributes
+*		 
+/*?		 What shouldn’t an exception do?
+*		  	 Variate a block to the point where it isn’t recognizable anymore. This is where a new block
+*				 should be created
+*		 
+*		     Use CSS classes	 
+*****                                                                                          *****
+*****                                                                                          *****
+*
+/*^ 
+/*_ 
+/*todo 
+/*! 
+/*?
+/**
+*/
+
+/*SECTION - Table Of Content
+*	Global Reset
+* Block
+* Composition & Layouts
+* Utilities
+* Exception */
+
+/*_ GLOBAL RESET: *****************/
+/*_ BLOCK: ************************/
+/*_ COMPOSITION & LAYOUTS: ********/
+/*_ UTILITIES: ********************/
+/*_ EXCEPTION: ********************/
