@@ -727,3 +727,4 @@ game.start();
 console.log(
 	'\n🎮 Game instance created as "game" variable. Type game.help() for commands!',
 );
+

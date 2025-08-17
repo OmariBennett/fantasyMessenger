@@ -144,16 +144,16 @@ body {
 
 /*_ COMPOSITION & LAYOUTS: ********/
 
-.chat-container {
+.app-container {
 	display: grid;
 	grid-template-rows: auto 1fr;
 	height: 100vh;
-	max-width: 1200px;
+	max-width: 1400px;
 	margin-inline: auto;
 	padding-inline: clamp(1rem, 5vw, 2rem);
 }
 
-.chat-header {
+.app-header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -162,10 +162,151 @@ body {
 	border-block-end: 1px solid oklch(50% 0 0 / 0.2);
 }
 
+.tab-nav {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.tab-button {
+	padding: 0.5rem 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.3);
+	border-radius: 0.25rem;
+	background-color: transparent;
+	color: var(--_primary-color);
+	font-weight: var(--font-weight-500);
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.tab-button.active {
+	background-color: oklch(60% 0.15 250);
+	color: white;
+	border-color: oklch(60% 0.15 250);
+}
+
+.main-content {
+	display: grid;
+	min-height: 0;
+}
+
+.tab-panel {
+	display: none;
+}
+
+.tab-panel.active {
+	display: block;
+}
+
+.chat-container {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	height: 100%;
+	padding-block: 1rem;
+}
+
+.chat-header-info {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 2rem;
+	align-items: start;
+	padding-block-end: 1rem;
+	border-block-end: 1px solid oklch(50% 0 0 / 0.2);
+}
+
 .user-info {
 	display: flex;
 	gap: 0.5rem;
 	align-items: center;
+}
+
+/* Clock Styles */
+.realm-clock {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.clock-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.5rem;
+	background-color: oklch(98% 0 0);
+	min-width: 200px;
+}
+
+.clock-display {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.clock-time {
+	display: flex;
+	align-items: center;
+	font-family: var(--ff-accent-400);
+	font-size: var(--font-size-600);
+	font-weight: var(--font-weight-600);
+	line-height: 1;
+	color: var(--_primary-color);
+}
+
+.clock-hours,
+.clock-minutes,
+.clock-seconds {
+	display: inline-block;
+	min-width: 2ch;
+	text-align: center;
+	transition: color 0.2s ease;
+}
+
+.clock-separator {
+	margin-inline: 0.125rem;
+	opacity: 0.7;
+}
+
+.clock-date {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.125rem;
+	font-size: var(--font-size-300);
+	font-weight: var(--font-weight-500);
+	color: oklch(50% 0 0);
+}
+
+.clock-day {
+	font-weight: var(--font-weight-600);
+}
+
+.clock-label {
+	font-size: var(--font-size-300);
+	font-weight: var(--font-weight-500);
+	color: oklch(50% 0 0);
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+	.chat-header-info {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto;
+		gap: 1rem;
+	}
+	
+	.realm-clock {
+		justify-self: center;
+	}
+	
+	.clock-container {
+		min-width: auto;
+		padding: 0.75rem;
+	}
 }
 
 .chat-main {
@@ -190,6 +331,541 @@ body {
 	padding-block-start: 1rem;
 	border-block-start: 1px solid oklch(50% 0 0 / 0.2);
 }
+
+/* RPG Game Layout */
+.rpg-container {
+	height: 100%;
+	padding-block: 1rem;
+}
+
+.rpg-main {
+	display: grid;
+	grid-template-columns: 300px 1fr;
+	gap: 2rem;
+	height: 100%;
+	min-height: 0;
+}
+
+.character-panel {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.character-creation,
+.character-status {
+	padding: 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.5rem;
+}
+
+.creation-form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.stats-grid {
+	display: grid;
+	gap: 0.75rem;
+}
+
+.stat-item {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.stat-label {
+	font-size: var(--font-size-300);
+	font-weight: var(--font-weight-600);
+}
+
+.stat-value {
+	font-size: var(--font-size-400);
+	font-weight: var(--font-weight-500);
+}
+
+progress {
+	width: 100%;
+	height: 8px;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.game-panel {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	gap: 1rem;
+	min-height: 0;
+}
+
+.location-info {
+	padding: 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.5rem;
+}
+
+.game-log {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.5rem;
+	overflow-y: auto;
+	max-height: 300px;
+	background-color: oklch(95% 0 0);
+}
+
+.log-message {
+	padding: 0.25rem 0;
+	border-block-end: 1px solid oklch(50% 0 0 / 0.1);
+}
+
+.action-controls {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.5rem;
+}
+
+.action-group h4 {
+	margin-block-end: 0.5rem;
+	font-size: var(--font-size-500);
+	font-weight: var(--font-weight-600);
+}
+
+.button-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	gap: 0.5rem;
+}
+
+.button-grid button,
+.rpg-container button {
+	padding: 0.5rem 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.3);
+	border-radius: 0.25rem;
+	background-color: oklch(95% 0 0);
+	color: var(--_primary-color);
+	font-weight: var(--font-weight-500);
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.button-grid button:hover,
+.rpg-container button:hover {
+	background-color: oklch(90% 0 0);
+	border-color: oklch(40% 0 0 / 0.5);
+}
+
+.combat-panel {
+	padding: 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.5rem;
+	background-color: oklch(98% 0.02 30);
+}
+
+.combat-info {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+	gap: 1rem;
+	margin-block-end: 1rem;
+}
+
+.combatant {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.vs-indicator {
+	font-size: var(--font-size-600);
+	text-align: center;
+}
+
+.combat-actions {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	gap: 0.5rem;
+}
+
+.shop-panel,
+.inventory-panel {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+	max-height: 500px;
+	padding: 1.5rem;
+	border: 1px solid oklch(50% 0 0 / 0.3);
+	border-radius: 0.5rem;
+	background-color: white;
+	box-shadow: 0 4px 6px oklch(50% 0 0 / 0.1);
+	overflow-y: auto;
+}
+
+.shop-items,
+.inventory-items {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-block: 1rem;
+}
+
+.shop-item,
+.inventory-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.75rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.25rem;
+}
+
+/* PvP Battle Layout */
+.players-panel,
+.pvp-challenge-panel,
+.battle-results-panel {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 400px;
+	max-height: 500px;
+	padding: 1.5rem;
+	border: 1px solid oklch(50% 0 0 / 0.3);
+	border-radius: 0.5rem;
+	background-color: white;
+	box-shadow: 0 4px 6px oklch(50% 0 0 / 0.1);
+	overflow-y: auto;
+	z-index: 1000;
+}
+
+.players-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-block: 1rem;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.player-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.75rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.25rem;
+	background-color: oklch(98% 0 0);
+}
+
+.player-info {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.player-name {
+	font-weight: var(--font-weight-600);
+	font-size: var(--font-size-400);
+}
+
+.player-details {
+	font-size: var(--font-size-300);
+	color: oklch(50% 0 0);
+}
+
+.challenge-actions,
+.pvp-combat-actions {
+	display: flex;
+	gap: 0.5rem;
+	margin-block-start: 1rem;
+}
+
+.pvp-combat-panel {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: white;
+	z-index: 2000;
+	display: grid;
+	grid-template-rows: auto auto 1fr auto auto;
+	gap: 1rem;
+	padding: 1rem;
+	overflow-y: auto;
+}
+
+.pvp-battle-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.5rem;
+	background-color: oklch(98% 0.02 30);
+}
+
+.turn-timer {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.timer-label {
+	font-size: var(--font-size-300);
+	font-weight: var(--font-weight-600);
+}
+
+.timer-value {
+	font-size: var(--font-size-500);
+	font-weight: var(--font-weight-700);
+	color: oklch(60% 0.15 250);
+	min-width: 2ch;
+	text-align: center;
+}
+
+.timer-bar {
+	width: 100px;
+	height: 8px;
+}
+
+.pvp-combat-info {
+	display: grid;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: start;
+	gap: 2rem;
+	padding: 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.5rem;
+}
+
+.pvp-combatant {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	padding: 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.5rem;
+	background-color: oklch(98% 0 0);
+}
+
+.combatant-details {
+	display: flex;
+	gap: 1rem;
+	font-size: var(--font-size-300);
+}
+
+.combatant-class {
+	font-weight: var(--font-weight-600);
+	color: oklch(60% 0.15 250);
+}
+
+.combatant-level {
+	color: oklch(50% 0 0);
+}
+
+.health-info,
+.mana-info {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+}
+
+.health-info progress,
+.mana-info progress {
+	width: 100%;
+	height: 8px;
+}
+
+.health-info span,
+.mana-info span {
+	font-size: var(--font-size-300);
+	font-weight: var(--font-weight-500);
+	text-align: center;
+}
+
+.vs-indicator {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 1rem;
+}
+
+.battle-status {
+	font-size: var(--font-size-700);
+}
+
+.current-turn {
+	font-size: var(--font-size-400);
+	font-weight: var(--font-weight-600);
+	text-align: center;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	background-color: oklch(80% 0.1 120);
+}
+
+.pvp-combat-log {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.5rem;
+	background-color: oklch(95% 0 0);
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+.pvp-combat-log .log-message {
+	padding: 0.25rem 0;
+	border-block-end: 1px solid oklch(50% 0 0 / 0.1);
+	font-size: var(--font-size-300);
+}
+
+.pvp-combat-actions {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 0.75rem;
+	padding: 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.5rem;
+}
+
+.skill-selection {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 300px;
+	padding: 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.3);
+	border-radius: 0.5rem;
+	background-color: white;
+	box-shadow: 0 4px 6px oklch(50% 0 0 / 0.2);
+	z-index: 3000;
+}
+
+.skills-list {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	margin-block: 1rem;
+}
+
+.skill-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0.5rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.25rem;
+	background-color: oklch(98% 0 0);
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+}
+
+.skill-item:hover {
+	background-color: oklch(90% 0 0);
+}
+
+.skill-name {
+	font-weight: var(--font-weight-600);
+}
+
+.skill-cost {
+	font-size: var(--font-size-300);
+	color: oklch(60% 0.15 250);
+}
+
+.battle-results-panel {
+	width: 500px;
+	max-height: 600px;
+}
+
+.results-content {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-block: 1rem;
+}
+
+.winner-announcement {
+	text-align: center;
+	font-size: var(--font-size-600);
+	font-weight: var(--font-weight-700);
+	padding: 1rem;
+	border-radius: 0.5rem;
+	background-color: oklch(80% 0.1 120);
+}
+
+.battle-stats,
+.rewards-info {
+	padding: 1rem;
+	border: 1px solid oklch(50% 0 0 / 0.2);
+	border-radius: 0.5rem;
+	background-color: oklch(98% 0 0);
+}
+
+.stat-line,
+.reward-line {
+	display: flex;
+	justify-content: space-between;
+	padding: 0.25rem 0;
+	border-block-end: 1px solid oklch(50% 0 0 / 0.1);
+}
+
+.player1-combatant.active,
+.player2-combatant.active {
+	border-color: oklch(60% 0.15 250);
+	box-shadow: 0 0 10px oklch(60% 0.15 250 / 0.3);
+}
+
+@media (max-width: 768px) {
+	.rpg-main {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto 1fr;
+	}
+	
+	.character-panel {
+		order: 2;
+	}
+	
+	.game-panel {
+		order: 1;
+	}
+
+	.pvp-combat-info {
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto auto;
+		gap: 1rem;
+	}
+
+	.vs-indicator {
+		order: 2;
+		padding: 0.5rem;
+	}
+
+	.pvp-combat-actions {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.players-panel,
+	.pvp-challenge-panel,
+	.battle-results-panel {
+		width: 90vw;
+		max-width: 400px;
+	}
+}
 /*_ EXCEPTION: ********************/
 /*_ UTILITIES: ********************/
 .visually-hidden:not(:focus):not(:active) {
@@ -200,6 +876,10 @@ body {
 	position: absolute;
 	white-space: nowrap;
 	width: 1px;
+}
+
+.hidden {
+	display: none !important;
 }
 
 .debug {

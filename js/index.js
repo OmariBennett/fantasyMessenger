@@ -235,3 +235,74 @@ FantasyCharacter.FLAWS = [
 ];
 
 module.exports = FantasyCharacter;
+
+/**!SECTION
+ *   The PvP system has been fully integrated into the RPG game with modern web technologies:
+
+  🎮 PvP Features Implemented:
+
+  ⚔️ Turn-Based Combat System
+
+  - Real-time Battles: Socket.IO powered multiplayer battles
+  - Turn Timer: 30-second turn limit with visual countdown
+  - Action Types: Attack, Skills, Items, and Surrender options
+  - Battle State Management: Comprehensive turn and battle tracking
+
+  👥 Player Management
+
+  - Online Player List: Find and challenge other players
+  - Matchmaking: Random challenge system for quick battles
+  - Challenge System: Send/accept/decline battle invitations
+  - Character Integration: Uses existing RPG character stats and skills
+
+  🔄 Real-time Synchronization
+
+  - Live Updates: Health, mana, and turn changes sync instantly
+  - Battle Log: Real-time combat action broadcasting
+  - Timer Sync: Synchronized turn timers across clients
+  - State Consistency: Server-authoritative battle state
+
+  🏆 Battle Results & Rewards
+
+  - Victory Conditions: Health depletion or surrender
+  - Experience & Gold: Winners gain XP and gold rewards
+  - Battle Statistics: Turn count, duration, and end reason
+  - Results Display: Comprehensive post-battle summary
+
+  🛠️ Technical Implementation:
+
+  Modern HTML5
+
+  - Semantic Structure: Proper dialog and form elements
+  - Progress Elements: Health/mana/timer bars with accessibility
+  - Modal Overlays: Full-screen battle interface with responsive design
+
+  Modern CSS Layout
+
+  - CSS Grid: Responsive battle layout with mobile support
+  - Flexbox: Action buttons and player information panels
+  - CSS Custom Properties: Consistent theming and animations
+  - Media Queries: Mobile-first responsive design
+
+  Modern JavaScript
+
+  - ES6+ Classes: PvPBattle, PvPManager with clean architecture
+  - Async/Await: Promise-based action handling
+  - Event Delegation: Efficient DOM event management
+  - Module System: Proper imports/exports and encapsulation
+
+  Socket.IO Integration
+
+  - Real-time Events: Battle sync, challenges, player lists
+  - Error Handling: Connection loss and invalid state management
+  - Server Authority: Battle validation and state consistency
+
+  🎯 How to Use:
+
+  1. Create Characters: Both players must create RPG characters
+  2. Find Players: Click "👥 Find Players" to see online players
+  3. Send Challenge: Challenge specific players or use random match
+  4. Accept/Decline: Respond to incoming battle challenges
+  5. Battle: Take turns using Attack, Skills, or Items
+  6. Win Rewards: Victors gain experience points and gold
+ */
