@@ -1,3 +1,5 @@
+import 'dotenv/config';
+import { Temporal } from '@js-temporal/polyfill';
 import express from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
@@ -16,7 +18,6 @@ const io = new Server(server, {
   }
 });
 
-const PORT = process.env.PORT || 3000;
 
 app.use(express.static(__dirname));
 
@@ -31,7 +32,10 @@ io.on('connection', (socket) => {
 
   socket.on('user joined', (data) => {
     const { username } = data;
-    connectedUsers.set(socket.id, { username, joinedAt: new Date() });
+    connectedUsers.set(socket.id, { 
+      username, 
+      joinedAt: Temporal.Now.instant()
+    });
     
     socket.broadcast.emit('user joined', { username });
     
@@ -50,7 +54,7 @@ io.on('connection', (socket) => {
       id: generateMessageId(),
       username: data.username,
       message: data.message,
-      timestamp: new Date().toISOString()
+      timestamp: Temporal.Now.instant().toString()
     };
 
     io.emit('message', messageData);
@@ -76,7 +80,13 @@ io.on('connection', (socket) => {
 });
 
 function generateMessageId() {
-  return Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+  const now = Temporal.Now.instant();
+  const epochNanos = now.epochNanoseconds;
+  const timeComponent = epochNanos.toString(36);
+  
+  const randomComponent = Math.random().toString(36).substring(2, 11);
+  
+  return `${timeComponent}-${randomComponent}`;
 }
 
 process.on('SIGTERM', () => {
@@ -87,7 +97,7 @@ process.on('SIGTERM', () => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Fantasy Messenger server running on http://localhost:${PORT}`);
+server.listen(process.env.PORT, () => {
+  console.log(`Fantasy Messenger server running on http://localhost:${process.env.PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });

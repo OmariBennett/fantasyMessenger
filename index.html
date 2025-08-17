@@ -1,37 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/default.css">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="/socket.io/socket.io.js"></script>
-  <script type="module" defer src="js/chat.js"></script>
-  <title>Fantasy Messenger</title>
-</head>
-<body>
-  <main class="chat-container">
-    <header class="chat-header">
-      <h1>Fantasy Messenger</h1>
-      <div class="user-info">
-        <input type="text" id="username" placeholder="Enter your character name" maxlength="20">
-        <button id="set-username">Join Quest</button>
-      </div>
-    </header>
-    
-    <section class="chat-main">
-      <div class="messages-container" id="messages">
-        <div class="message system">
-          <span class="message-text">Welcome to the Fantasy Realm! Enter your character name to begin...</span>
-        </div>
-      </div>
-      
-      <form class="message-form" id="chat-form">
-        <input type="text" id="message-input" placeholder="Type your message..." disabled>
-        <button type="submit" id="send-button" disabled>Send</button>
-      </form>
-    </section>
-  </main>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="css/default.css" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<!-- <script src="/socket.io/socket.io.js"></script> -->
+		<!-- <script type="module" defer src="js/chat.js"></script> -->
+		<script type="module" defer src="js/rpg-game.js"></script>
+		<title>Fantasy Messenger</title>
+	</head>
+	<body>
+		<main class="chat-container">
+			<header class="chat-header">
+				<h1>Fantasy Messenger</h1>
+				<div class="user-info">
+					<input
+						type="text"
+						id="username"
+						placeholder="Enter your character name"
+						maxlength="20"
+					/>
+					<button id="set-username">Join Quest</button>
+				</div>
+			</header>
+
+			<section class="chat-main">
+				<div class="messages-container" id="messages">
+					<div class="message system">
+						<span class="message-text"
+							>Welcome to the Fantasy Realm! Enter your character name to
+							begin...</span
+						>
+					</div>
+				</div>
+
+				<form class="message-form" id="chat-form">
+					<input
+						type="text"
+						id="message-input"
+						placeholder="Type your message..."
+						disabled
+					/>
+					<button type="submit" id="send-button" disabled>Send</button>
+				</form>
+			</section>
+		</main>
+	</body>
 </html>
